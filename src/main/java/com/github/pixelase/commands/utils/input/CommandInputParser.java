@@ -11,7 +11,7 @@ public final class CommandInputParser {
 		List<String> matches = new ArrayList<>();
 		CommandParseResult parseResult = null;
 
-		Pattern p = Pattern.compile("\\b[^\"&^\\s]+\\b");
+		Pattern p = Pattern.compile("[^\"&^\\s]+");
 
 		Matcher m = p.matcher(inputLine);
 		while (m.find()) {
@@ -19,7 +19,7 @@ public final class CommandInputParser {
 		}
 
 		parseResult = (matches.isEmpty()) ? new CommandParseResult()
-				: (matches.size() > 1) ? new CommandParseResult(matches.get(0), matches.subList(1, matches.size() - 1))
+				: (matches.size() > 1) ? new CommandParseResult(matches.get(0), matches.subList(1, matches.size()))
 						: new CommandParseResult(matches.get(0), new ArrayList<String>());
 
 		return parseResult;

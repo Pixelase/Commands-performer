@@ -24,4 +24,40 @@ public class CommandParseResult {
 	public List<String> getArgs() {
 		return args;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((args == null) ? 0 : args.hashCode());
+		result = prime * result + ((commandName == null) ? 0 : commandName.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CommandParseResult other = (CommandParseResult) obj;
+		if (args == null) {
+			if (other.args != null)
+				return false;
+		} else if (!args.equals(other.args))
+			return false;
+		if (commandName == null) {
+			if (other.commandName != null)
+				return false;
+		} else if (!commandName.equals(other.commandName))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "CommandParseResult [commandName=" + commandName + ", args=" + args + "]";
+	}
 }

@@ -1,7 +1,9 @@
 package com.github.pixelase.commands.core;
 
-public interface Performer {
-	void perform(String commandName, String... args);
+import com.github.pixelase.commands.utils.input.CommandParseResult;
 
-	boolean tryPerform(String commandName, String... args);
+public interface Performer {
+	void perform(CommandParseResult parseResult);
+
+	boolean tryPerform(CommandParseResult parseResult);
 }

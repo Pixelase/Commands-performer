@@ -1,17 +1,16 @@
 package com.github.pixelase.commands.utils.input;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 public class CommandParseResult {
 	private final String commandName;
-	private final List<String> args;
+	private final String[] args;
 
 	public CommandParseResult() {
-		this("", new ArrayList<String>());
+		this("", new String[0]);
 	}
 
-	public CommandParseResult(String commandName, List<String> args) {
+	public CommandParseResult(String commandName, String... args) {
 		super();
 		this.commandName = commandName;
 		this.args = args;
@@ -21,7 +20,7 @@ public class CommandParseResult {
 		return commandName;
 	}
 
-	public List<String> getArgs() {
+	public String[] getArgs() {
 		return args;
 	}
 
@@ -29,7 +28,7 @@ public class CommandParseResult {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((args == null) ? 0 : args.hashCode());
+		result = prime * result + Arrays.hashCode(args);
 		result = prime * result + ((commandName == null) ? 0 : commandName.hashCode());
 		return result;
 	}
@@ -43,10 +42,7 @@ public class CommandParseResult {
 		if (getClass() != obj.getClass())
 			return false;
 		CommandParseResult other = (CommandParseResult) obj;
-		if (args == null) {
-			if (other.args != null)
-				return false;
-		} else if (!args.equals(other.args))
+		if (!Arrays.equals(args, other.args))
 			return false;
 		if (commandName == null) {
 			if (other.commandName != null)
@@ -58,6 +54,6 @@ public class CommandParseResult {
 
 	@Override
 	public String toString() {
-		return "CommandParseResult [commandName=" + commandName + ", args=" + args + "]";
+		return "CommandParseResult [commandName=" + commandName + ", args=" + Arrays.toString(args) + "]";
 	}
 }

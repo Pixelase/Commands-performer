@@ -1,18 +1,15 @@
 package com.github.pixelase.commands.core;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public abstract class Command implements Comparable<Command> {
 	protected String name;
 	protected String description;
-	protected List<String> args;
+	protected String[] args;
 
 	public Command(String name, String description) {
-		this(name, description, new ArrayList<String>());
+		this(name, description, new String[0]);
 	}
 
-	private Command(String name, String description, List<String> args) {
+	private Command(String name, String description, String[] args) {
 		this.name = name;
 		this.description = description;
 		this.args = args;
@@ -36,16 +33,16 @@ public abstract class Command implements Comparable<Command> {
 		this.description = description;
 	}
 
-	public List<String> getArgs() {
+	public String[] getArgs() {
 		return args;
 	}
 
-	public void setArgs(List<String> args) {
+	public void setArgs(String[] args) {
 		this.args = args;
 	}
 
 	protected boolean isArgsEmpty() {
-		return args == null || args.isEmpty();
+		return args == null || args.length == 0;
 	}
 
 	@Override

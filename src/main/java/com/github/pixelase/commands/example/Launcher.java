@@ -19,7 +19,7 @@ public class Launcher {
 				try {
 					parseResult = CommandInputParser.parse(CommandInputReader.readLine(System.in));
 
-					if (!performer.tryPerform(parseResult)) {
+					if (!performer.tryPerform(parseResult.getCommandName(), parseResult.getArgs())) {
 						System.out.println("Command not found.");
 					}
 				} catch (Exception e) {

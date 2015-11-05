@@ -2,8 +2,6 @@ package com.github.pixelase.commands.core;
 
 import java.util.List;
 
-import com.github.pixelase.commands.utils.input.CommandParseResult;
-
 public class CommandsPerformer implements Performer {
 	protected List<Command> commands;
 
@@ -21,17 +19,17 @@ public class CommandsPerformer implements Performer {
 	}
 
 	@Override
-	public void perform(CommandParseResult parseResult) {
-		if (!tryPerform(parseResult)) {
+	public void perform(String commandName, String... args) {
+		if (!tryPerform(commandName, args)) {
 			throw new IllegalArgumentException("Command not found");
 		}
 	}
 
 	@Override
-	public boolean tryPerform(CommandParseResult parseResult) {
+	public boolean tryPerform(String commandName, String... args) {
 		for (Command command : commands) {
-			if (command.getName().equals(parseResult.getCommandName())) {
-				command.setArgs(parseResult.getArgs());
+			if (command.getName().equals(commandName)) {
+				command.setArgs(args);
 				command.execute();
 				return true;
 			}

@@ -17,10 +17,11 @@ public final class CommandInputParser {
 		while (m.find()) {
 			matches.add(m.group());
 		}
-
+		
+		String[] args = new String[0];
 		parseResult = (matches.isEmpty()) ? new CommandParseResult()
-				: (matches.size() > 1) ? new CommandParseResult(matches.get(0), matches.subList(1, matches.size()))
-						: new CommandParseResult(matches.get(0), new ArrayList<String>());
+				: (matches.size() > 1) ? new CommandParseResult(matches.get(0), matches.subList(1, matches.size()).toArray(args))
+						: new CommandParseResult(matches.get(0), args);
 
 		return parseResult;
 

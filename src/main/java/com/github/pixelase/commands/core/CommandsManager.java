@@ -1,11 +1,16 @@
 package com.github.pixelase.commands.core;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CommandsManager implements CommandsPerformer {
 	protected List<Command> commands;
 
-	public CommandsManager(List<Command> commands) {
+	protected CommandsManager() {
+		this(new ArrayList<Command>());
+	}
+
+	protected CommandsManager(List<Command> commands) {
 		super();
 		this.commands = commands;
 	}
@@ -38,4 +43,31 @@ public class CommandsManager implements CommandsPerformer {
 		return false;
 	}
 
+	public static class Builder {
+		private final List<Command> commands;
+
+		public Builder() {
+			this(new ArrayList<Command>());
+		}
+
+		private Builder(List<Command> commands) {
+			this.commands = commands;
+		}
+
+		public Builder add(Command command) {
+			this.commands.add(command);
+
+			return this;
+		}
+
+		public List<Command> getCommands() {
+			return commands;
+		}
+
+		public CommandsManager build() {
+			commands.sort(null);
+			return new CommandsManager(commands);
+		}
+
+	}
 }

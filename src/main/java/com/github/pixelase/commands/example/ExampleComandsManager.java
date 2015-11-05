@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.function.Consumer;
 
 import com.github.pixelase.commands.core.Command;
-import com.github.pixelase.commands.core.CommandsPerformer;
+import com.github.pixelase.commands.core.CommandsManager;
 
-public class ExampleComandsPerformer extends CommandsPerformer {
+public class ExampleComandsManager extends CommandsManager {
 
-	public ExampleComandsPerformer() {
+	public ExampleComandsManager() {
 		this(new ArrayList<Command>());
 
 		/*
@@ -86,7 +86,7 @@ public class ExampleComandsPerformer extends CommandsPerformer {
 		commands.sort(null);
 	}
 
-	public ExampleComandsPerformer(List<Command> commands) {
+	public ExampleComandsManager(List<Command> commands) {
 		super(commands);
 	}
 

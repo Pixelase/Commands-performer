@@ -2,7 +2,7 @@ package com.github.pixelase.commands.example;
 
 import java.nio.file.Paths;
 
-import com.github.pixelase.commands.core.Performer;
+import com.github.pixelase.commands.core.CommandsPerformer;
 import com.github.pixelase.commands.utils.input.CommandInputParser;
 import com.github.pixelase.commands.utils.input.CommandInputReader;
 import com.github.pixelase.commands.utils.input.CommandParseResult;
@@ -10,7 +10,7 @@ import com.github.pixelase.commands.utils.input.CommandParseResult;
 public class Launcher {
 	public static void main(String[] args) {
 		try {
-			Performer performer = new ExampleComandsPerformer();
+			CommandsPerformer performer = new ExampleComandsManager();
 			CommandParseResult parseResult = null;
 
 			while (true) {

@@ -6,11 +6,7 @@ import java.util.List;
 public class CommandsManager implements CommandsPerformer {
 	protected List<Command> commands;
 
-	protected CommandsManager() {
-		this(new ArrayList<Command>());
-	}
-
-	protected CommandsManager(List<Command> commands) {
+	public CommandsManager(List<Command> commands) {
 		super();
 		this.commands = commands;
 	}
